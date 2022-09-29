@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GoodGames | Front-end technical test
 
-## Getting Started
+<details>
+  <summary>Click to read the original assignment</summary>
 
-First, run the development server:
+Exercise React/Typescript/Api
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+This exercise is designed to test your knowledge on the React Framework, the Typescript programming language and Apis calls.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You have to create a small app that use the RAWG Api (Video Games Database) :
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+[RAWG Video Games Database API](https://api.rawg.io/docs/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Here a some relevant informations you'll need to know :
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Your application must use React and Typescript.
+- You can do whatever you want from a functionality and design standpoint (import any library, use any UI theme etc)
+- Unit testing is optional but appreciated nonetheless.
+- The Api is on a free plan, meaning there is 20.000 max requests per month. Be extra careful not to spam it ! local jsons are your friends
+- You should at least implement 2 features: games list and game details. Then you can do whatever you want from a functionality and design standpoint
+- You have 1 week from the day you've received the assignment in your inbox.
 
-## Learn More
+</details>
 
-To learn more about Next.js, take a look at the following resources:
+## Live version
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This test has been deployed and you can [check it out here](https://ggapp.vercel.app/).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tech used
 
-## Deploy on Vercel
+- typescript
+- nextjs
+- chakra-ui
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Running locally
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Clone the repo
+- Execute `npm install`
+- Execute `npm run dev`
+- Open http://localhost:3000
+
+## Steps and thought process
+
+The test took me about 5 hours to complete.
+
+Here are the steps I took to complete it:
+
+1. Bootstrap the project with `create-next-app`.
+2. Setup my TS, eslint, prettier, and next-config settings.
+3. Build the UI with Chakra-UI and fixture data.
+4. Try out the RAWG API with insomnia, and then implement the API in the project with next.js' API routes.
+5. Fix some bugs here and there before sending it.
+6. Deploy on vercel and write this README.
+
+I used Chakra-UI to build the interface because I'm used to it and knew I could build the project quickly.
+
+I added internationalization because why not. It actually caused me some bugs towards the end of the project, so I kind of regret adding i18n.
+
+## Potential improvements
+
+- I didn't have time to implement unit testing, even though I knew it would be appreciated.
+- Some parts of the design could be improved.
+- I wanted to add more features and do a better design, but I had to be fast enought to send it before the deadline.
