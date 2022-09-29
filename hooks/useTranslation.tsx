@@ -1,13 +1,11 @@
 import { useMemo } from 'react';
 import { useTranslation as useNextTranslation } from 'next-i18next';
 import { UseTranslationOptions } from 'react-i18next';
-import { useRouter } from 'next/router';
 
 export default function useTranslation(namespace?: string, options?: UseTranslationOptions) {
-  const router = useRouter();
   const { t, i18n } = useNextTranslation(namespace, options);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const T = useMemo(() => t, [i18n, router.locale]);
+  const T = useMemo(() => t, [i18n]);
   return { t: T, i18n };
 }
 

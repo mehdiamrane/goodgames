@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import type { GetServerSideProps } from 'next';
+import type { GetStaticProps } from 'next';
 import useTranslation from 'hooks/useTranslation';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
@@ -140,7 +140,14 @@ const GameDetailsPage: FC = () => {
 
 export default GameDetailsPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale = 'en' }) => {
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
