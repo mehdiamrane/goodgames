@@ -22,7 +22,7 @@ const SearchPage: NextPage = () => {
   const { data, error } = useSWR<Game[], Error>(`/api/search?term=${router.query.term}`, fetcher);
 
   useEffect(() => {
-    if (!router.query.term) {
+    if (router.isReady && !router.query.term) {
       router.push('/');
     }
     if (error) {
@@ -40,7 +40,7 @@ const SearchPage: NextPage = () => {
       <Box as='main' m='0 auto' w='full' pt={{ base: 24, md: 44 }} maxW='full'>
         <Flex {...containerProps} direction='column' align='center' mb={{ base: 16, md: 44 }}>
           <Heading as='h1' mb={4}>
-            {`${t('search.title')} ${router.query.term}`}
+            {`${t('search.title')} ${router.query.term || ''}`}
           </Heading>
         </Flex>
 

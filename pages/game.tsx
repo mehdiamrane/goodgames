@@ -33,7 +33,7 @@ const GameDetailsPage: FC = () => {
   const { data, error } = useSWR<Game, Error>(`/api/game?id=${router.query.id}`, fetcher);
 
   useEffect(() => {
-    if (error || !router.query.id) {
+    if (error || (router.isReady && !router.query.id)) {
       router.push('/404');
     }
   }, [router, error]);
