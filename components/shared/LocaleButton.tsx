@@ -6,11 +6,12 @@ import useTranslation from 'hooks/useTranslation';
 const LocaleButton = () => {
   const router = useRouter();
   const { t } = useTranslation('common');
+  const { pathname, asPath, query } = router;
 
   const handleLocaleChange = () => {
     const value = router.locale === 'fr' ? 'en' : 'fr';
 
-    router.push(router.route, router.asPath, {
+    router.push({ pathname, query }, asPath, {
       locale: value,
     });
   };

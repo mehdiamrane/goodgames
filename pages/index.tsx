@@ -67,7 +67,7 @@ const Home: NextPage = () => {
                       <Skeleton key={`skeleton-screenshot-${index}`} height={40} w='full' />
                     ))
                 : data?.slice(0, 12).map((game) => (
-                    <Link href={`/game/${game.id}`} bare key={game.id}>
+                    <Link href={`/game?id=${game.id}`} bare key={game.id}>
                       <Image
                         alt='Screenshot'
                         src={game.cover}

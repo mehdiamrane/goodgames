@@ -33,7 +33,7 @@ const GameDetailsPage: FC = () => {
   const { data, error } = useSWR<Game, Error>(`/api/game?id=${router.query.id}`, fetcher);
 
   useEffect(() => {
-    if (error) {
+    if (error || !router.query.id) {
       router.push('/404');
     }
   }, [router, error]);
@@ -139,13 +139,6 @@ const GameDetailsPage: FC = () => {
 };
 
 export default GameDetailsPage;
-
-export const getStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  };
-};
 
 export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
   return {

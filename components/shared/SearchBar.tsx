@@ -28,7 +28,7 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder, chakraProps }) => {
     (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (event.key === 'Enter' && searchTerm.length > 0) {
         setSearchTerm('');
-        router.push(`/search/${searchTerm}`);
+        router.push(`/search?term=${searchTerm}`);
       }
     },
     [router, searchTerm],

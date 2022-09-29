@@ -58,7 +58,7 @@ const Browse: NextPage = () => {
           pb={{ base: 12, md: 16 }}
         >
           {data?.map((game) => (
-            <Link href={`/game/${game.id}`} key={game.id} bare>
+            <Link href={`/game?id=${game.id}`} key={game.id} bare>
               <Image
                 alt={game.name}
                 src={game.cover}

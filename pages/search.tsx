@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import type { NextPage, GetServerSideProps } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import useTranslation from 'hooks/useTranslation';
@@ -22,6 +22,9 @@ const SearchPage: NextPage = () => {
   const { data, error } = useSWR<Game[], Error>(`/api/search?term=${router.query.term}`, fetcher);
 
   useEffect(() => {
+    if (!router.query.term) {
+      router.push('/');
+    }
     if (error) {
       router.push('/404');
     }
@@ -55,7 +58,7 @@ const SearchPage: NextPage = () => {
           pb={{ base: 12, md: 16 }}
         >
           {data?.map((game) => (
-            <Link href={`/game/${game.id}`} key={game.id} bare>
+            <Link href={`/game?id=${game.id}`} key={game.id} bare>
               <Flex
                 {...containerProps}
                 gap={8}
@@ -102,7 +105,7 @@ const SearchPage: NextPage = () => {
 
 export default SearchPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale = 'en' }) => {
+export const getStaticProps: GetStaticProps = async ({ locale = 'en' }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
